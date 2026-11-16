@@ -1,0 +1,53 @@
+{
+  "name": "@mercy-pay/react",
+  "version": "0.1.0",
+  "description": "Mercy Pay pour React : un bouton et un hook qui envoient le client sur la page de paiement hébergée.",
+  "keywords": [
+    "mercy pay",
+    "react",
+    "checkout",
+    "paiement",
+    "mobile money"
+  ],
+  "homepage": "https://docs.mercy-pay.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mercy-pay/react.git"
+  },
+  "bugs": "https://github.com/mercy-pay/react/issues",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "jsdom": "^26.1.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
