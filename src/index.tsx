@@ -84,3 +84,5 @@ export function CheckoutButton({ createSession, pendingLabel, onError, navigate,
     </button>
   );
 }
+
+export { EmbeddedCheckout, type EmbeddedCheckoutProps, type Appearance, type CheckoutEvent } from './embedded.js';

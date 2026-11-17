@@ -1,7 +1,7 @@
 {
   "name": "@mercy-pay/react",
-  "version": "0.1.0",
-  "description": "Mercy Pay pour React : un bouton et un hook qui envoient le client sur la page de paiement hébergée.",
+  "version": "0.2.0",
+  "description": "Mercy Pay pour React : le formulaire de paiement intégré à votre page, ou un bouton vers la page de paiement hébergée.",
   "keywords": [
     "mercy pay",
     "react",
@@ -49,5 +49,8 @@
     "react-dom": "^19.3.1",
     "typescript": "^5.9.3",
     "vitest": "^3.2.7"
+  },
+  "dependencies": {
+    "@mercy-pay/js": "^0.1.0"
   }
 }

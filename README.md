@@ -1,12 +1,32 @@
 # Mercy Pay pour React
 
-Un bouton et un hook qui envoient le client sur la page de paiement hébergée de [Mercy Pay](https://mercy-pay.com). Aucun style imposé, aucune donnée de carte dans votre app.
+Deux façons d'encaisser avec [Mercy Pay](https://mercy-pay.com), sans donnée de carte dans votre app :
+
+- `<EmbeddedCheckout>` affiche le formulaire de paiement dans votre page : mobile money, carte avec la 3D Secure, Apple Pay et Google Pay sur vos sites vérifiés ;
+- `<CheckoutButton>` et `useCheckout()` envoient le client sur la page de paiement hébergée.
 
 ```sh
 npm install @mercy-pay/react
 ```
 
 La session de paiement se crée **sur votre serveur**, avec votre clé API ([`@mercy-pay/node`](https://github.com/mercy-pay/mercy-pay-node), [`@mercy-pay/next`](https://github.com/mercy-pay/next) ou un autre SDK). Le bouton appelle votre serveur, puis ouvre la page renvoyée.
+
+## Le formulaire dans votre page
+
+Votre serveur crée la session avec `ui_mode: "embedded"` et renvoie son `client_secret`. Votre site doit être déclaré dans **Paramètres > Paiements** ; en sandbox, `localhost` marche tout de suite.
+
+```tsx
+import { EmbeddedCheckout } from '@mercy-pay/react';
+
+<EmbeddedCheckout
+  clientSecret={clientSecret}
+  appearance={{ theme: 'light', radius: 12 }}
+  onSuccess={() => router.push('/commande/4821/merci')}
+  onError={() => setClientSecret(null)}
+/>
+```
+
+Le cadre suit la hauteur du formulaire. Les événements : `onReady`, `onProcessing`, `onSuccess`, `onFailure`, `onExpired`, `onError`, et `onEvent` pour tous. Voir le [guide du paiement intégré](https://docs.mercy-pay.com/payments/embedded).
 
 ## Le bouton
 
